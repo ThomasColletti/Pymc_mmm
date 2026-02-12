@@ -1,0 +1,26 @@
+# -------- API --------
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.8.2
+
+# -------- Core data stack --------
+numpy==2.0.2
+pandas==2.2.2
+scipy==1.13.1
+xarray==2024.6.0
+
+# -------- Bayesian modeling stack --------
+pymc==5.16.2
+pytensor==2.23.0
+arviz==0.18.0
+pymc-marketing==0.15.1
+
+# -------- Model serialization --------
+cloudpickle==3.0.0
+
+# -------- Plotting (needed internally by pymc-marketing) --------
+matplotlib==3.9.0
+seaborn==0.13.2
+
+# -------- Helpful numeric deps often pulled by PyMC --------
+numba==0.60.0
