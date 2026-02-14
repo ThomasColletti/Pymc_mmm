@@ -108,19 +108,22 @@ def predict_sales(
 
     # 3) Build MMM object with same config as training
     mmm = build_mmm_from_training_config(prior_sigma=prior_sigma)
+    
+    # 4) Attach the loaded posterior to the MMM object
+    # This populates fit_result so sample_posterior_predictive can work
+    mmm.fit_result = idata
 
-    # 4) Clean/format new data into X_new
+    # 5) Clean/format new data into X_new
     df = _clean_and_format_new_df(new_df, train_df=train_df)
 
     X_new = df[[DATE_COL] + CHANNEL_COLS + ["prime_day_promo", "mothers_day_promo", "t"]]
 
-    # 5) Posterior predictive
+    # 6) Posterior predictive
     # pymc-marketing MMM supports passing idata + new data for prediction
     # Depending on version, method name may be `sample_posterior_predictive` or `predict`.
     try:
         ppc_idata = mmm.sample_posterior_predictive(
             X=X_new,
-            idata=idata,
         )
         # common variable name is "sales" but can vary by version
         # we'll try a few options robustly
@@ -159,5 +162,12 @@ def predict_sales(
 
     return out
 
-
-### testing
+## read the new data 
+new_data = pd.read_csv("input/new_media.csv")
+pred_sale = predict_sales(
+    model_nc_path="/Users/Tao/PycharmProjects/Pymc_mmm/artifacts/trained_pymc_mmm_model_01.nc",
+    new_df=new_data,
+    training_csv_path="/Users/Tao/PycharmProjects/Pymc_mmm/artifacts/pymc_data.csv",
+    hdi_prob=0.9,
+) 
+print(pred_sale)
