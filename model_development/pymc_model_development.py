@@ -29,7 +29,7 @@ my_model_config = {
     "channel_coef": Prior("HalfNormal", sigma=prior_sigma),
     "control_coef": Prior("Normal", mu=0, sigma=0.05),
     "seasonality": Prior("Laplace", mu=0, b=0.2),
-    "likelihood": Prior("Normal", sigma=Prior("HalfNormal", sigma=6))
+    "likelihood": Prior("Normal", sigma=Prior("HalfNormal", sigma=6)) # check on this
 }
 
 mmm = MMM(
@@ -59,8 +59,6 @@ mmm.fit(X=X, y=y, chains=4, target_accept=0.85, nuts_sampler="numpyro", random_s
 
 ### Save the model
 mmm.save("trained_pymc_mmm_model_01.nc")
-
-
 
 #### Model Diagnost + Analysis
 

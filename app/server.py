@@ -106,7 +106,6 @@ def health():
     }
 
 
-
 @app.post("/predict", response_model=PredictResponse)
 def predict(req: PredictRequest):
     df = _to_dataframe(req.rows)

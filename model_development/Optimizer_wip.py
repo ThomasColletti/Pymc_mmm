@@ -1,10 +1,8 @@
 import warnings
-
 import arviz as az
 import matplotlib.pyplot as plt
 import numpy as np
 from pymc_marketing.mmm.budget_optimizer import optimizer_xarray_builder
-
 from pymc_marketing.mmm import MMM
 
 warnings.filterwarnings("ignore")
@@ -14,7 +12,7 @@ plt.rcParams["figure.figsize"] = [12, 7]
 plt.rcParams["figure.dpi"] = 100
 
 #load model
-mmm = MMM.load("trained_pymc_mmm_model_01.nc")
+mmm = MMM.load("artifacts/trained_pymc_mmm_model_01.nc")
 #
 # response_curve_fig = mmm.plot_direct_contribution_curves()
 # response_curve_fig.show()
