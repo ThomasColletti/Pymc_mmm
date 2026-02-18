@@ -95,10 +95,10 @@ data["mothers_day_promo"] = (data["week"] == "2025-05-18").astype(float)
 # 6. Spend Transformation
 # Assumptions on the parameters and coefficients (The Ground Truth ROAs)
 configs = {
-    'search': {'alpha': 0.05, 'lam':2, 'beta': 8},
-    'social': {'alpha': 0.2, 'lam':3, 'beta': 12},
-    'ctv':    {'alpha': 0.5, 'lam':4, 'beta': 15},
-    'tv':     {'alpha': 0.8, 'lam':5, 'beta': 25}
+    'search': {'alpha': 0.05, 'lam':2},
+    'social': {'alpha': 0.2, 'lam':3},
+    'ctv':    {'alpha': 0.5, 'lam':4},
+    'tv':     {'alpha': 0.8, 'lam':5}
 }
 
 # spend → adstock → scale → saturation
